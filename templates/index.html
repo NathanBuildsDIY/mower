@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NathanBuildsDIY robot mower v2!</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .manual {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        margin: 50px auto;
+    }
+    .direction {
+        position: absolute;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+    }
+    .forward {
+        top: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .backward {
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .right {
+        top: 52%;
+        left: calc(100% - 60px);
+        transform: translateY(-52%);
+    }
+    .left {
+        top: 52%;
+        left: 30px;
+        transform: translateY(-52%);
+    }
+    .stop {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .auto {
+        bottom: 30px;
+        left: 30px;
+        transform: translateY(-52%);
+    }
+    .stopauto {
+        bottom: 30px;
+        left: calc(100% - 60px);
+        transform: translateY(-52%);
+    }
+</style>
+</head>
+<body>
+
+<div class="manual">
+    <a class="direction forward" href="/fwd">fwd</a>
+    <a class="direction backward" href="/back">back</a>
+    <a class="direction right" href="/right">right</a>
+    <a class="direction left" href="/left">left</a>
+    <a class="direction stop" href="/stop">stop</a>
+    <img src="{{url_for('static', filename='arrows-40162_960_720.png')}}" alt="Robot Dir" style="width: 100%;">
+    <a class="direction auto" href="/auto">auto</a>
+    <a class="direction stopauto" href="/stopauto">stopauto</a>
+</div>
+
+</body>
+</html>
+
