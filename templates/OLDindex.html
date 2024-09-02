@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+
+		<style>
+			.noselect {
+			    /* Prevent text selection */
+			    -webkit-user-select: none;
+			    -khtml-user-select: none;
+			    -moz-user-select: none;
+			    -o-user-select: none;
+			    user-select: none;
+			}
+		</style>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
+		<script>
+			var isTouchSupported = 'ontouchstart' in window;
+			var startPressEvent = isTouchSupported ? "touchstart" : "mousedown";
+			var stopPressEvent = isTouchSupported ? "touchend" : "mouseup";
+
+			function move(e) {
+					$.post($(this).attr('id'));
+					e.stopPropagation();
+			}
+
+			function stop(e) {
+					$.post("stop");
+					e.stopPropagation();
+			}
+
+			function makeControl(domElementId) {
+				$(domElementId).bind(startPressEvent, move).bind(stopPressEvent, stop);
+			}
+
+			$(document).ready(function() {
+				makeControl("#forward");
+				makeControl("#backward");
+				makeControl("#turnLeft");
+				makeControl("#turnRight");
+			});
+		</script>
+	</head>
+
+	<body class="noselect">
+		<p id="forward">Forward</p>
+		<p id="backward">Backward</p>
+		<p id="turnLeft">Turn Left</p>
+		<p id="turnRight">Turn Right</p>
+	</body>
+
+</html>
